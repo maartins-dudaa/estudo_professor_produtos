@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Livewire\User;
+
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Livewire\Component;
+
+class UserEdit extends Component
+{
+
+    public $name;
+    public $userId;
+    public $email;
+    public $password;
+
+
+    protected $rules = [
+        
+        'email' => 'unique:users'
+    ];
+
+    public $messages = [
+        'email.unique' => 'Email já cadastrado'
+    ];
+
+
+    // função mount faz a montagem do componete 
+    public function mount($id)
+    {
+        $this->userId = $id;
+        $user = User::find($this->userId);
+
+        if ($user) {
+            $this->name = $user->name;
+            $this->email =  $user->email;
+        }
+    }
+
+    public function update()
+    {
+        $user = User::find($this->userId);
+
+        if ($this->password != null) {
+            $user->password = Hash::make($this->password);
+        }
+        $user->name = $this->name;
+        $user->email = $this->email;
+
+        $user->save();
+
+        session()->flash('success', 'Atualizado');
+    }
+
+    public function render()
+    {
+        return view('livewire.user.user-edit');
+    }
+}
