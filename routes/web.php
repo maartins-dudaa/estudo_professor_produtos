@@ -2,6 +2,7 @@
 
 use App\Livewire\Auth\Login;
 use App\Livewire\Dashboard;
+use App\Livewire\Movimentacoes;
 use App\Livewire\Produto\PodutoCreate;
 use App\Livewire\Produto\ProdutoEdit;
 use App\Livewire\Produto\ProdutoIndex;
@@ -20,3 +21,4 @@ Route::get('/user/edit/{id}', UserEdit::class)->middleware('auth')->name('user.e
 Route::get('/produto/create', PodutoCreate::class)->name('produto.create');
 Route::get('/produtos', ProdutoIndex::class)->name('produto.index');
 Route::get('/produto/edit/{id}', ProdutoEdit::class)->name('produto.edit');
+Route::get('/movimentacao', Movimentacoes::class)->name('movimentacao');

@@ -44,20 +44,26 @@ class DatabaseSeeder extends Seeder
 
         Produto::create([
             'nome' => 'Tablet',
+           'descricao' => 'Tablet preto Philco',
             'quantidade' => '78',
-            'preco' => 'R$ 1000.00'
+            'quantidade_minima' => '70',
+            'preco' => '3000.00'
         ]);
 
         Produto::create([
             'nome' => 'Fone de ouvido',
-            'quantidade' => '78',
-            'preco' => 'R$ 1000.00'
+            'descricao' => 'Fones sem fio samsung',
+            'quantidade' => '90',
+            'quantidade_minima' => '50',
+            'preco' => '700.00'
         ]);
 
         Produto::create([
             'nome' => 'LED RGB',
+            'descricao' => 'led para PC',
             'quantidade' => '78',
-            'preco' => 'R$ 1000.00'
+            'quantidade_minima' => '50',
+            'preco' => '1000.00'
         ]);
 
         

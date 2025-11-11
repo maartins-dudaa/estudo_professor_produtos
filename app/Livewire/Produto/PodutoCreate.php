@@ -10,28 +10,38 @@ class PodutoCreate extends Component
     public $nome;
     public $quantidade;
     public $preco;
+    public $quantidade_minima;
+    public $descricao;
 
     protected $rules = [
         'nome' =>  'required',
-        'preco' => 'required'
+        'preco' => 'required',
+        'quantidade_minima' => 'required',
+        'quantidade' => 'required',
+        'descricao' => 'required'
     ];
 
     public $messages = [
-        'nome.required' => 'Preencher Nome do produto',
-         'preco.required' => 'Preencher preço do produto'
+        'nome.required' => 'Esse campo é obrigatório',
+        'quantidade_minima.required' => 'Esse campo é obrigatório',
+        'quantidade.required' => 'Esse campo é obrigatório',
+        'descricao.required' => 'Esse campo é obrigatório',
+        'preco.required' => 'Esse campo é obrigatório'
     ];
 
-    public function store(){
+    public function store()
+    {
         $this->validate();
-       Produto::create([
+        Produto::create([
 
-        'nome' => $this->nome,
-        'quantidade' => $this->quantidade,
-        'preco' => $this->preco
+            'nome' => $this->nome,
+            'quantidade' => $this->quantidade,
+            'descricao' => $this->descricao,
+            'quantidade_minima' => $this->quantidade_minima,
+            'preco' => $this->preco
 
         ]);
-       return redirect()->route('produto.index');
-
+        return redirect()->route('produto.index');
     }
 
 

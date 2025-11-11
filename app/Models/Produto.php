@@ -10,7 +10,13 @@ class Produto extends Model
     use HasFactory;
     protected $fillable = [
         'nome',
+        'descricao',
+        'preco',
         'quantidade',
-        'preco'
+        'quantidade_minima',
     ];
+
+    public function movimentacaos(){
+        return $this->hasmany(Movimentacao::class, 'produto_id');
+    }
 }
